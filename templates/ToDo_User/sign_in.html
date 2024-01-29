@@ -1,0 +1,87 @@
+
+{% load static %}
+
+{% block content %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Moirai+One&display=swap" rel="stylesheet">
+    <style>
+    body{
+        background: url("/media/15518074_5594016.jpeg")no-repeat center;
+    }
+    input[type=text], select {
+      width: 100%;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+        padding: 12px 5px;
+    }
+    input[type=password], select {
+      width: 100%;
+      margin: 8px 0;
+        padding: 12px 5px;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+
+    </style>
+
+
+    <div class="container-fluid">
+    <center>
+        <main class="tm-main" style="width: 30%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: 100px;
+          flex-direction: column;
+          background: #f6f6f8;
+          border-radius: 20px;
+          box-shadow: 0px 0px 10px 10px #b6b6ba;
+        ">
+
+            <div class="register_main" style="display: flex; justify-content: space-between;padding: 20px;gap: 30px">
+                {% csrf_token %}
+                <div class="main_left">
+                    <h1 style="font-size:45px;font-family: 'Moirai One', system-ui;">ToDo</h1>
+                </div>
+                <div  style="border-right: 2px solid black"></div>
+                <form action="" method="post" style="
+                display:flex;
+                gap:5px;
+                justify-content: center;
+                flex-direction: column">
+                    {% csrf_token %}
+                    <label for="username" style="font-family: 'Moirai One', system-ui;color: black;text-align: center;font-size: 35px">Login</label>
+                    <label>
+                        <input class="" type="text" name="username" placeholder="Введите имя:" style="border-radius: 5px;border: none;height: 25px;">
+                    </label>
+
+                    <label>
+                        <input class=" tm-search-input" placeholder="Введите пароль:" type="password" name="password" style="border-radius: 5px;border: none;height: 25px" autocomplete="off">
+                    </label>
+                    {% if error %}
+                        <p style="color: red;font-size: 12px">* {{ error }}</p>
+                    {% else %}
+                    {% endif %}
+                    <button type="submit" style="
+                     box-shadow: 0px 0px 2px 2px #0d6efd;border: none;margin-top: 5px; width: 100%;border-radius: 10px;background:#2b2f32;font-family: 'Lobster', sans-serif; color: white">Войти</button>
+
+                    <div class="">
+                        <a href="{% url 'signup' %}"><button type="button" class="" style="border: none;">Регистрация</button></a>
+                    </div>
+                </form>
+            </div>
+            <center>
+                        <h3>Войти с помощью:</h3>
+            </center>
+        </main>
+    </center>
+    </div>
+
+{% endblock content %}

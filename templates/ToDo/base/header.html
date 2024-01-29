@@ -1,0 +1,70 @@
+<header>
+    <div style="display: flex; justify-content: flex-start;">
+      <div class="dropdown-menu  position-static pt-0 mx-0 rounded-3 shadow overflow-hidden w-280px" data-bs-theme="dark" style="
+      width: 30%;height: 100vh;display: flex;flex-direction: column;justify-content: space-between;background: #f6f6f8;
+          border-radius: 20px;
+          box-shadow: 0px 0px 10px 10px #b6b6ba;">
+          <div class="detail_header">
+             <div class="detail_header_main" style="border-bottom:1px solid #505458;display: flex;align-items: center;justify-content: space-between">
+                 <div class="detail_header_mail_left">
+                     <h2 style="font-family: 'Moirai One', system-ui;padding: 20px;color: black;">ToDo</h2>
+                 </div>
+                 <div class="detail_header_mail_right">
+                        {% if not user.is_authenticated %}
+                            <div class="login_sign" style="display: flex;gap: 13px;padding: 10px;">
+                                <div class="">
+                                     <a href="{% url 'login' %}" style="border-radius: 100px;
+  width: 50px;
+  border: 2px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  padding-left: 5px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" style="width: 30px;"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3zM504 312V248H440c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V136c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H552v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"/></svg></a>
+                                </div>
+                            </div>
+                         {% else %}
+                            <li class="tm-nav-item">
+                                <a href="{% url 'logout' %}" class="tm-nav-link">
+                                    <button type="submit" style="margin: 20px">Выйти</button>
+                                </a>
+                            </li>
+                         {% endif %}
+                 </div>
+             </div>
+         </div>
+            <ul class="list-unstyled mb-0" style="">
+              {% if not user.is_authenticated %}
+                    <div>
+                        <h3 style="text-align: center;color: black;font-family: 'Inconsolata', monospace;">Вы не авторизовались на сайт !</h3>
+                    </div>
+              {% else %}
+                    {% if post %}
+                    {% for todo in post %}
+                        <top>
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center gap-2 py-2" style="background: black"href="{% url 'detail_todo' todo.id %}">
+                                      <span class="d-inline-block bg-success rounded-circle p-1" ></span>
+                                     {{ todo.title }}
+                                </a>
+                            </li>
+                        </top>
+                    {% endfor %}
+                        <center>
+                            <a href="{% url 'create_post' %}" >
+                                <button type="submit" style="width: 90%;">Создать задание</button>
+                            </a>
+                        </center>
+                    {% else %}
+                          <a href="{% url 'create_post' %}">
+                            <button type="submit">Создать задание</button>
+                          </a>
+                    {% endif %}
+              {% endif %}
+          </ul>
+
+      {% include "ToDo/base/footer.html" %}
+    </div>
+
+    </div>
+</header>

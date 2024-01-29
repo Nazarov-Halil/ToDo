@@ -1,0 +1,14 @@
+{% extends "ToDo/base/todolist.html" %}
+{% block title %}
+    ToDo
+{% endblock %}
+{% block content %}
+    {% include "ToDo/base/header.html" %}
+    <style>
+        body{
+        background: url("/media/15518074_5594016.jpeg")no-repeat center;
+    }
+
+    </style>
+    {% include 'ToDo/todo_detail.html' %}
+{% endblock content %}
