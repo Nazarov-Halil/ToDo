@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
-import sys
-sys.setrecursionlimit(10000)
+from django.views.generic import ListView
 
 
 def logout_logics(request):
@@ -30,6 +29,7 @@ def signup(request):
     return render(request, 'ToDo_User/sign_up.html')
 
 
+
 def login_logics(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -39,6 +39,7 @@ def login_logics(request):
         if user is not None:
             login(request, user)
             return redirect('/')
-        error = "Неправильный пароль или логин"
+        error = "Incorrect password or login"
         return render(request, 'ToDo_User/sign_in.html', locals())
     return render(request, 'ToDo_User/sign_in.html')
+

@@ -43,6 +43,7 @@
               border-radius: 20px;
               box-shadow: 0px 0px 10px 10px #b6b6ba;">
                 <div class="register_main" style="display: flex; justify-content: space-between;padding: 20px;gap: 30px">
+                {% csrf_token %}
                     <div class="main_left">
                         <h1 style="font-size:45px;font-family: 'Moirai One', system-ui;">ToDo</h1>
                     </div>
@@ -51,23 +52,25 @@
                         {% csrf_token %}
                          <label for="username" style="font-family: 'Moirai One', system-ui;color: black;text-align: center;font-size: 35px">Login</label>
                         <label>
-                            <input class=" tm-search-input" type="text" name="username" placeholder="Введите имя:"  style="border-radius: 5px;border: none" required>
+                            <input class=" tm-search-input" type="text" name="username" placeholder="Enter your name:"  style="border-radius: 5px;border: none" required>
                         </label>
                         <label>
-                            <input class=" tm-search-input" type="password" name="password" placeholder="Введите пароль:" style="border-radius: 5px;border: none" required>
+                            <input class=" tm-search-input" type="password" name="password" placeholder="Enter password:" style="border-radius: 5px;border: none" required>
                         </label>
 
 
                         <label>
-                            <input class=" tm-search-input" type="password" name="repassword" placeholder="Повторите пароль:" style="border-radius: 5px;border: none" required>
+                            <input class=" tm-search-input" type="password" name="repassword" placeholder="Repeat password:" style="border-radius: 5px;border: none" required>
                         </label>
 
                         {% if error %}
                             <p style="color: red">* {{ error }}</p>
                         {% else %}
                         {% endif %}
-                    <button type="submit" style="
-                     box-shadow: 0px 0px 2px 2px #0d6efd;border: none;margin-top: 5px; width: 100%;border-radius: 10px;background:#2b2f32;font-family: 'Lobster', sans-serif; color: white">Войти</button>
+                    <a href="{% url 'list_todo' %}">
+                        <button type="submit" style="
+                     box-shadow: 0px 0px 2px 2px #0d6efd;border: none;margin-top: 5px; width: 100%;border-radius: 10px;background:#2b2f32;font-family: 'Lobster', sans-serif; color: white">To come in</button>
+                    </a>
 
                     </form>
                 </div>

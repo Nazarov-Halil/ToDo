@@ -1,14 +1,9 @@
-{% extends "ToDo/base/todolist.html" %}
-{% block title %}
-    ToDo
-{% endblock %}
+{% include 'ToDo/base/todolist.html' %}
 {% block content %}
-    {% include "ToDo/base/header.html" %}
-    <style>
-        body{
-        background: url("/media/15518074_5594016.jpeg")no-repeat center;
-    }
-
-    </style>
-    {% include 'ToDo/todo_detail.html' %}
-{% endblock content %}
+    <div style="display:flex;">
+    {% include 'ToDO/base/header.html' %}
+        <center>
+            <h1 style="font-family: 'Moirai One', system-ui;margin-left: 150px;font-size: 90px;margin-top: 70px">Welcome todo </h1>
+        </center>
+    </div>
+{% endblock %}

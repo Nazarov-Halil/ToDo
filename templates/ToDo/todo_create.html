@@ -1,16 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Create</title>
-</head>
-<body>
+
+{% block content %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Moirai+One&display=swap" rel="stylesheet">
+    <style>
+    body{
+        background: url("/media/15518074_5594016.jpeg")no-repeat center;
+    }
+    input[type=text], select {
+      width: 100%;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+        padding: 12px 5px;
+    }
+    input{
+      width: 100%;
+      margin: 8px 0;
+        padding: 12px 5px;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    .style_form{
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          background: #f6f6f8;
+          border-radius: 20px;
+    }
+    </style>
     <div class="container">
-        <form action="{% url 'create_post'%}" method = "post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Create</button>
-        </form>
+        <center>
+            <main class="tm-main" style="width: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          background: #f6f6f8;
+          border-radius: 20px;
+          box-shadow: 0px 0px 10px 10px #b6b6ba;
+        ">
+            <div class="main_create" style="display: flex; justify-content: space-between;padding: 20px;gap: 30px">
+                <div class="main_create_left">
+                    <h1 style="font-size:55px;font-family: 'Moirai One', system-ui;">ToDo <br> Create Task</h1>
+                </div>
+                <div  style="border-right: 2px solid black"></div>
+                <div class="main_create_left">
+                    <form action="{% url 'create_post'%}" method = "post" class="style_form">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" style="width: 100%;background: #f6f6f8;border-radius: 5px;box-shadow: 0px 0px 3px 3px #b6b6ba;border: none;height: 30px;cursor: pointer">Create Task</button>
+                    </form>
+                </div>
+            </div>
+            </main>
+        </center>
     </div>
-</body>
-</html>
+{% endblock %}

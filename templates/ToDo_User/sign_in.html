@@ -59,26 +59,26 @@
                     {% csrf_token %}
                     <label for="username" style="font-family: 'Moirai One', system-ui;color: black;text-align: center;font-size: 35px">Login</label>
                     <label>
-                        <input class="" type="text" name="username" placeholder="Введите имя:" style="border-radius: 5px;border: none;height: 25px;">
+                        <input class="" type="text" name="username" placeholder="Enter your name:" style="border-radius: 5px;border: none;height: 25px;">
                     </label>
 
                     <label>
-                        <input class=" tm-search-input" placeholder="Введите пароль:" type="password" name="password" style="border-radius: 5px;border: none;height: 25px" autocomplete="off">
+                        <input class=" tm-search-input" placeholder="Enter password:" type="password" name="password" style="border-radius: 5px;border: none;height: 25px" autocomplete="off">
                     </label>
                     {% if error %}
                         <p style="color: red;font-size: 12px">* {{ error }}</p>
                     {% else %}
                     {% endif %}
                     <button type="submit" style="
-                     box-shadow: 0px 0px 2px 2px #0d6efd;border: none;margin-top: 5px; width: 100%;border-radius: 10px;background:#2b2f32;font-family: 'Lobster', sans-serif; color: white">Войти</button>
+                     box-shadow: 0px 0px 2px 2px #0d6efd;border: none;margin-top: 5px; width: 100%;border-radius: 10px;background:#2b2f32;font-family: 'Lobster', sans-serif; color: white">To come in</button>
 
                     <div class="">
-                        <a href="{% url 'signup' %}"><button type="button" class="" style="border: none;">Регистрация</button></a>
+                        <a href="{% url 'signup' %}"><button type="button" class="" style="border: none;">Registration</button></a>
                     </div>
                 </form>
             </div>
             <center>
-                        <h3>Войти с помощью:</h3>
+                        <h3>Login using:</h3>
             </center>
         </main>
     </center>

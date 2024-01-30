@@ -1,7 +1,10 @@
-<header>
-    <div style="display: flex; justify-content: flex-start;">
+<style>
+
+</style>
+<header style="max-width: 100%;display: flex;align-items: center">
+    <div style="display: flex;">
       <div class="dropdown-menu  position-static pt-0 mx-0 rounded-3 shadow overflow-hidden w-280px" data-bs-theme="dark" style="
-      width: 30%;height: 100vh;display: flex;flex-direction: column;justify-content: space-between;background: #f6f6f8;
+      width: 100%;height: 100vh;display: flex;flex-direction: column;justify-content: space-between;background: #f6f6f8;
           border-radius: 20px;
           box-shadow: 0px 0px 10px 10px #b6b6ba;">
           <div class="detail_header">
@@ -25,8 +28,7 @@
                             </div>
                          {% else %}
                             <li class="tm-nav-item">
-                                <a href="{% url 'logout' %}" class="tm-nav-link">
-                                    <button type="submit" style="margin: 20px">Выйти</button>
+                                <a href="{% url 'logout' %}" class="tm-nav-link"><svg style="width: 30px;margin-right: 20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/></svg>
                                 </a>
                             </li>
                          {% endif %}
@@ -36,35 +38,27 @@
             <ul class="list-unstyled mb-0" style="">
               {% if not user.is_authenticated %}
                     <div>
-                        <h3 style="text-align: center;color: black;font-family: 'Inconsolata', monospace;">Вы не авторизовались на сайт !</h3>
+                        <h3 style="text-align: center;color: black;font-family: 'Inconsolata', monospace;font-weight: 700">You are not logged <br> in to the site!</h3>
                     </div>
               {% else %}
-                    {% if post %}
-                    {% for todo in post %}
-                        <top>
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center gap-2 py-2" style="background: black"href="{% url 'detail_todo' todo.id %}">
-                                      <span class="d-inline-block bg-success rounded-circle p-1" ></span>
-                                     {{ todo.title }}
-                                </a>
-                            </li>
-                        </top>
-                    {% endfor %}
-                        <center>
-                            <a href="{% url 'create_post' %}" >
-                                <button type="submit" style="width: 90%;">Создать задание</button>
-                            </a>
-                        </center>
-                    {% else %}
-                          <a href="{% url 'create_post' %}">
-                            <button type="submit">Создать задание</button>
-                          </a>
-                    {% endif %}
+                  {% for todo in post %}
+                     <li style="margin-top: 5px">
+                         <a class="dropdown-item d-flex align-items-center gap-2 py-2 task" style="background: black;border-radius: 5px;" href="{% url 'detail_todo' todo.id %}">
+                             <span class="d-inline-block bg-success rounded-circle p-1" ></span>{{ todo.title }}
+                         </a>
+                     </li>
+
+                  {% endfor %}
+                  <center>
+                      <a href="{% url 'create_post' %}" >
+                          <button type="submit" title="Создать задание" style="width: 99%;background: transparent;border-radius: 5px;margin-top: 5px;border-style: dashed;color: black;text-align: center"><svg style="width: 20px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg></button>
+                      </a>
+                  </center>
               {% endif %}
-          </ul>
+            </ul>
 
       {% include "ToDo/base/footer.html" %}
     </div>
-
     </div>
+
 </header>
